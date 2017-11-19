@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const { schema } = require('../api/graphql/schema');
 const cors = require('cors');
 
-// console.log(schema);
+// console.log(`schema >> ${schema}`);
 
 module.exports = function addGraphQLMiddlewares(expressApp) {
   // expressApp.use('*', cors());

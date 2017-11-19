@@ -1,38 +1,33 @@
 {
-  "name": "react-boilerplate",
+  "name": "react-assignment",
   "version": "3.5.0",
-  "description":
-    "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "description": "A react-boilerplate based, highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/hishamsharif/react-assignment.git"
   },
   "engines": {
     "npm": ">=3",
     "node": ">=5"
   },
-  "author": "Max Stoiber",
+  "author": "Hisham",
   "license": "MIT",
   "scripts": {
     "postinstall": "npm run build:dll",
     "prebuild": "npm run build:clean",
-    "build":
-      "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
+    "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
     "build:clean": "rimraf ./build",
     "build:dll": "node ./internals/scripts/dependencies.js",
     "start": "cross-env NODE_ENV=development node server",
-    "start:tunnel":
-      "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
+    "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
     "start:production": "npm run test && npm run build && npm run start:prod",
     "start:prod": "cross-env NODE_ENV=production node server",
-    "extract-intl":
-      "babel-node --presets env,stage-0 -- ./internals/scripts/extract-intl.js",
+    "extract-intl": "babel-node --presets env,stage-0 -- ./internals/scripts/extract-intl.js",
     "npmcheckversion": "node ./internals/scripts/npmcheckversion.js",
     "preinstall": "npm run npmcheckversion",
     "clean:all": "npm run test:clean && npm run build:clean",
     "lint": "npm run lint:js",
-    "lint:eslint":
-      "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
+    "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
     "lint:js": "npm run lint:eslint -- . ",
     "lint:staged": "lint-staged",
     "pretest": "npm run test:clean && npm run lint",
@@ -46,7 +41,9 @@
   },
   "pre-commit": "lint:staged",
   "babel": {
-    "plugins": ["styled-components"],
+    "plugins": [
+      "styled-components"
+    ],
     "presets": [
       [
         "env",
@@ -59,7 +56,9 @@
     ],
     "env": {
       "production": {
-        "only": ["app"],
+        "only": [
+          "app"
+        ],
         "plugins": [
           "transform-react-remove-prop-types",
           "transform-react-constant-elements",
@@ -67,7 +66,10 @@
         ]
       },
       "test": {
-        "plugins": ["transform-es2015-modules-commonjs", "dynamic-import-node"]
+        "plugins": [
+          "transform-es2015-modules-commonjs",
+          "dynamic-import-node"
+        ]
       }
     }
   },
@@ -80,7 +82,11 @@
       "jest": true,
       "es6": true
     },
-    "plugins": ["redux-saga", "react", "jsx-a11y"],
+    "plugins": [
+      "redux-saga",
+      "react",
+      "jsx-a11y"
+    ],
     "parserOptions": {
       "ecmaVersion": 6,
       "sourceType": "module",
@@ -89,10 +95,19 @@
       }
     },
     "rules": {
-      "arrow-parens": ["error", "always"],
-      "arrow-body-style": [2, "as-needed"],
+      "arrow-parens": [
+        "error",
+        "always"
+      ],
+      "arrow-body-style": [
+        2,
+        "as-needed"
+      ],
       "class-methods-use-this": 0,
-      "comma-dangle": [2, "always-multiline"],
+      "comma-dangle": [
+        2,
+        "always-multiline"
+      ],
       "import/imports-first": 0,
       "import/newline-after-import": 0,
       "import/no-dynamic-require": 0,
@@ -122,7 +137,10 @@
       "no-use-before-define": 0,
       "prefer-template": 2,
       "react/forbid-prop-types": 0,
-      "react/jsx-first-prop-new-line": [2, "multiline"],
+      "react/jsx-first-prop-new-line": [
+        2,
+        "multiline"
+      ],
       "react/jsx-filename-extension": 0,
       "react/jsx-no-target-blank": 0,
       "react/require-default-props": 0,
@@ -151,7 +169,11 @@
       "minimist",
       "sanitize.css"
     ],
-    "include": ["core-js", "lodash", "eventsource-polyfill"]
+    "include": [
+      "core-js",
+      "lodash",
+      "eventsource-polyfill"
+    ]
   },
   "jest": {
     "collectCoverageFrom": [
@@ -160,28 +182,34 @@
       "!app/*/RbGenerated*/*.{js,jsx}",
       "!app/app.js",
       "!app/global-styles.js",
-      "!app/*/*/Loadable.{js,jsx}"
+      "!app/*/*/Loadable.{js,jsx}",
+      "!app/components/GraphiQLEditor.js"
     ],
     "coverageThreshold": {
       "global": {
-        "statements": 98,
+        "statements": 85,
         "branches": 91,
-        "functions": 98,
-        "lines": 98
+        "functions": 85,
+        "lines": 85
       }
     },
-    "moduleDirectories": ["node_modules", "app"],
+    "moduleDirectories": [
+      "node_modules",
+      "app"
+    ],
     "moduleNameMapper": {
-      ".*\\.(css|less|styl|scss|sass)$":
-        "<rootDir>/internals/mocks/cssModule.js",
-      ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/internals/mocks/image.js"
+      ".*\\.(css|less|styl|scss|sass)$": "<rootDir>/internals/mocks/cssModule.js",
+      ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/image.js"
     },
-    "setupTestFrameworkScriptFile":
-      "<rootDir>/internals/testing/test-bundler.js",
+    "setupTestFrameworkScriptFile": "<rootDir>/internals/testing/test-bundler.js",
     "testRegex": "tests/.*\\.test\\.js$"
   },
+  "resolutions": {
+    "graphql": "^0.11.0"
+  },
   "dependencies": {
+    "apollo-client": "^2.0.3",
+    "apollo-client-preset": "^1.0.3",
     "babel-polyfill": "6.23.0",
     "body-parser": "^1.18.2",
     "chalk": "^1.1.3",
@@ -190,8 +218,10 @@
     "cross-env": "5.0.0",
     "express": "4.15.3",
     "fontfaceobserver": "2.0.9",
+    "graphiql": "^0.11.10",
     "graphql": "^0.11.7",
     "graphql-server-express": "^1.2.0",
+    "graphql-tag": "^2.5.0",
     "graphql-tools": "^2.8.0",
     "history": "4.6.3",
     "hoist-non-react-statics": "2.1.1",
@@ -199,6 +229,7 @@
     "intl": "1.2.5",
     "invariant": "2.2.2",
     "ip": "1.1.5",
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "4.17.4",
     "minimist": "1.2.0",
     "prop-types": "15.5.10",
@@ -253,6 +284,7 @@
     "file-loader": "0.11.1",
     "html-loader": "0.4.5",
     "html-webpack-plugin": "2.29.0",
+    "ignore-loader": "^0.1.2",
     "image-webpack-loader": "2.0.0",
     "imports-loader": "0.7.1",
     "jest-cli": "20.0.4",

@@ -14,7 +14,10 @@ function createWebpackMiddleware(compiler, publicPath) {
 
 module.exports = function addDevMiddlewares(app, webpackConfig) {
   const compiler = webpack(webpackConfig);
-  const middleware = createWebpackMiddleware(compiler, webpackConfig.output.publicPath);
+  const middleware = createWebpackMiddleware(
+    compiler,
+    webpackConfig.output.publicPath
+  );
 
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
@@ -23,7 +26,8 @@ module.exports = function addDevMiddlewares(app, webpackConfig) {
   // artifacts, we use it instead
   const fs = middleware.fileSystem;
 
-  app.get('*', (req, res) => {
+  // using * as path will block graphiql communication
+  app.get('/', (req, res) => {
     fs.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) => {
       if (err) {
         res.sendStatus(404);

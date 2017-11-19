@@ -15,6 +15,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import BuildActivities from 'components/BuildActivities/Loadable';
+import GraphiQLEditor from 'components/GraphiQLEditor';
 import NotFoundPage from 'components/NotFoundPage/Loadable';
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={BuildActivities} />
+        <Route exact path="/graphiql" component={GraphiQLEditor} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
