@@ -2,12 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
-import { createHttpLink } from 'apollo-link-http'; // HttpLink
+import { HttpLink } from 'apollo-link-http'; // createHttpLink
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import fetch from 'whatwg-fetch';
 
-import fetch from 'unfetch';
-
-const link = createHttpLink({ uri: '/graphql', fetch });
+const link = new HttpLink(); // createHttpLink({ uri: '/graphql', fetch }); // new HttpLink(); //
 
 const client = new ApolloClient({
   link,
@@ -17,8 +16,9 @@ const client = new ApolloClient({
 // eslint-disable-next-line react/prefer-stateless-function
 class ApiProvider extends React.Component {
   render() {
+    const aclient = this.props.apolloClient || client;
     return (
-      <ApolloProvider client={client}>{this.props.children}</ApolloProvider>
+      <ApolloProvider client={aclient}>{this.props.children}</ApolloProvider>
     );
   }
 }

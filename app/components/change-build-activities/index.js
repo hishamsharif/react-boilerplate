@@ -10,7 +10,7 @@ import { graphql } from 'react-apollo';
 
 import ActivitiesView from './view/index';
 import {
-  listActivityById,
+  listActivityDetailById,
   activitiesListQuery,
   activitiesListResultsToProps,
 } from './services/list-activities';
@@ -25,7 +25,7 @@ export class ChangeOrBuildActivities extends React.Component {
 
   listDetailById(id) {
     // console.log(`id >> ${id}`);
-    const activity = listActivityById(id);
+    const activity = listActivityDetailById(id);
     this.setState({ selectedActivity: activity });
   }
 

@@ -1,20 +1,27 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-
-// import { BuildActivities } from '../index';
-
 import React from 'react';
 import { mount } from 'enzyme';
+
+import { ApolloClient } from 'apollo-client';
+import { createHttpLink } from 'apollo-link-http'; // HttpLink
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import fetch from 'whatwg-fetch';
 
 import ApiProvider from '../../api-provider/index';
 import ChangeBuildActivities from '../index';
 import { listAllActivities } from '../services/list-activities';
 
+const link = createHttpLink({ uri: '/graphql', fetch }); // new HttpLink(); //
+
+const client = new ApolloClient({
+  link,
+  cache: new InMemoryCache(),
+});
+
 describe('<ChangeBuildActivities />', () => {
   const allActivitiesData = listAllActivities();
   it('should all activities from api backend', () => {
     const mounted = mount(
-      <ApiProvider>
+      <ApiProvider apolloClient={client}>
         <ChangeBuildActivities />
       </ApiProvider>
     );
