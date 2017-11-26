@@ -1,5 +1,5 @@
-import activitiesFixture from '../tests/activities-fixture';
 import gql from 'graphql-tag';
+import activitiesFixture from '../tests/activities-fixture';
 
 const activitiesListQuery = gql`
   query ActivitiesListQuery {
@@ -20,9 +20,6 @@ const activitiesListQuery = gql`
 `;
 
 const activitiesListResultsToProps = {
-  options: ({}) => ({
-    variables: {},
-  }),
   props: ({ data }) => {
     if (data.loading) {
       return {

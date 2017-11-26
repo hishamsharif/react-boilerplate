@@ -31,6 +31,7 @@ export class ChangeOrBuildActivities extends React.Component {
 
   render() {
     const { loading, error, allActivitiesData } = this.props;
+    // eslint-disable-next-line no-nested-ternary
     return loading ? (
       <div> Loading... </div>
     ) : error ? (

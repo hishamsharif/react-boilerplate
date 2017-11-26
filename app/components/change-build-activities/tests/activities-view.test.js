@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 
-import ActivitiesView from '../views/activities-view';
+import ActivitiesView from '../view/index';
 import { listAllActivities } from '../services/list-activities';
 
 describe('<ActivitiesView />', () => {

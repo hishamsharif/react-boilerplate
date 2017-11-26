@@ -1,8 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import StyledExpandedRow from './styles/expanded-row';
 
-export default class ExpandedRow extends React.Component {
+// eslint-disable-next-line react/prefer-stateless-function
+class ExpandedRow extends React.Component {
   render() {
     const { rowData, selectedRowId } = this.props;
 
@@ -14,3 +16,10 @@ export default class ExpandedRow extends React.Component {
     );
   }
 }
+
+ExpandedRow.propTypes = {
+  selectedRowId: PropTypes.string,
+  rowData: PropTypes.object,
+};
+
+export default ExpandedRow;

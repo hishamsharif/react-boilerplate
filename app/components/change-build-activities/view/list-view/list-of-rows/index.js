@@ -39,10 +39,11 @@ const ListOfRows = ({
 );
 
 ListOfRows.propTypes = {
-  rowsOptions: PropTypes.object,
   columnsOptions: PropTypes.array,
+  rowsOptions: PropTypes.object,
   rowData: PropTypes.object,
-  onRowSelected: PropTypes.func,
+  onSelectedRow: PropTypes.func,
+  selectedRowId: PropTypes.string,
 };
 
 export default ListOfRows;

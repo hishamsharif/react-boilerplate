@@ -1,10 +1,11 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 
-import ListView from '../views/list-view/index';
+import ListView from '../view/list-view/index';
 // import RowHeaders from '../views/list-view/row-headers';
 import { listAllActivities } from '../services/list-activities';
-import tableColumnsOptions from '../views/table-columns-options';
+import columnsDisplayOptions from '../view/columns-display-options';
+import rowsDisplayOptions from '../view/rows-display-options';
 
 describe('<ListView />', () => {
   let props;
@@ -25,7 +26,8 @@ describe('<ListView />', () => {
 
   beforeEach(() => {
     props = {
-      columnsOptions: tableColumnsOptions,
+      columnsOptions: columnsDisplayOptions,
+      rowsOptions: rowsDisplayOptions,
       rowsData: listAllActivities(),
       listActivityDetailById: jest.fn(),
       selectedActivity: { id: '123', detail: 'metrics details' },
@@ -41,7 +43,10 @@ describe('<ListView />', () => {
     });
 
     it('should have rendered the rows for each item in the list of activities rowsData', () => {
-      expect(mountedComponent.find('Row').length).toBe(props.rowsData.length);
+      // console.log(mountedComponent.debug());
+      expect(mountedComponent.find('ListOfRows').length).toBe(
+        props.rowsData.length
+      );
     });
   });
 });
