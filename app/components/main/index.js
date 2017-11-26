@@ -14,15 +14,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import BuildActivities from 'components/BuildActivities/Loadable';
-import GraphiQLEditor from 'components/GraphiQLEditor';
-import NotFoundPage from 'components/NotFoundPage/Loadable';
+import ChangeOrBuildActivities from 'components/change-build-activities/loadable';
+import GraphiQLEditor from 'components/graphiql-editor/loadable';
+import NotFoundPage from 'components/not-found-page/loadable';
 
 export default function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={BuildActivities} />
+        <Route exact path="/" component={ChangeOrBuildActivities} />
         <Route exact path="/graphiql" component={GraphiQLEditor} />
         <Route component={NotFoundPage} />
       </Switch>

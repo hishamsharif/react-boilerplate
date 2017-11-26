@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE } from '../components/App/constants';
+import { DEFAULT_LOCALE } from '../components/main/constants';
 import { formatTranslationMessages } from '../i18n';
 
 jest.mock('../translations/en.json', () => ({

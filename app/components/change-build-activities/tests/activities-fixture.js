@@ -1,4 +1,4 @@
-const activities = [
+export default [
   {
     id: '1',
     code: 'Tenrox-R1_1235',
@@ -96,13 +96,3 @@ const activities = [
     },
   },
 ];
-
-const resolvers = {
-  Query: {
-    activities: () => activities,
-    activityDetail: (root, { id }) =>
-      activities.find((activity) => activity.id === id),
-  },
-};
-
-module.exports = { resolvers };

@@ -17,11 +17,13 @@ import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
 import 'graphiql/graphiql.css';
 
+// import 'react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+
 // Import root app
-import App from 'components/App';
+import App from 'components/main';
 
 // Import Language Provider
-import LanguageProvider from 'components/LanguageProvider';
+import LanguageProvider from 'components/language-provider';
 
 // Load the favicon, the manifest.json file and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
@@ -52,12 +54,16 @@ const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 
+import ApiProvider from './services/api/index';
+
 const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
         <ConnectedRouter history={history}>
-          <App />
+          <ApiProvider>
+            <App />
+          </ApiProvider>
         </ConnectedRouter>
       </LanguageProvider>
     </Provider>,
@@ -69,7 +75,7 @@ if (module.hot) {
   // Hot reloadable React components and translation json files
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
-  module.hot.accept(['./i18n', 'components/App'], () => {
+  module.hot.accept(['./i18n', 'components/main'], () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE);
     render(translationMessages);
   });

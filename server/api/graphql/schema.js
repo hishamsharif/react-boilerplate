@@ -14,6 +14,7 @@ type Activity {
   build: String
   unitTest: String
   functionalTest: String
+  expandable: Int
   detail: [ActivityDetail]!
 }
 type ActivityDetail {
